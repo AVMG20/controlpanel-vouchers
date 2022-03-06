@@ -138,7 +138,8 @@ class VoucherController extends Controller
      */
     public function dataTableQuery(): mixed
     {
-        $query = Voucher::query();
+        $query = Voucher::query()->withCount('users');
+
 
         return datatables($query)
             ->addColumn('status', function (Voucher $voucher) {
@@ -160,7 +161,7 @@ class VoucherController extends Controller
                 return "<code>$voucher->code</code>";
             })
             ->editColumn('uses', function (Voucher $voucher) {
-                return $voucher->used . '/' . $voucher->uses;
+                return $voucher->users_count . ' / ' . $voucher->uses;
             })
             ->editColumn('updated_at', function ($model) {
                 return $model->updated_at ? $model->updated_at->diffForHumans() : '';

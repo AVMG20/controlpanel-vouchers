@@ -36,14 +36,6 @@ class Voucher extends Model
         'uses'    => 'integer'
     ];
 
-    /**
-     * Append custom attributes
-     *
-     * @var string[]
-     */
-    protected $appends = ['used', 'status'];
-
-
     public static function boot()
     {
         parent::boot();
@@ -57,7 +49,7 @@ class Voucher extends Model
      * Get the amount of times this voucher has been used
      * @return int
      */
-    public function getUsedAttribute()
+    public function getUsedCount(): int
     {
         return $this->users()->count();
     }
@@ -66,7 +58,7 @@ class Voucher extends Model
      * Get status of voucher
      * @return string
      */
-    public function getStatusAttribute()
+    public function getStatusAttribute(): string
     {
         if ($this->users()->count() >= $this->uses) return __('USES_LIMIT_REACHED');
         if (!is_null($this->expires_at)) {

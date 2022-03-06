@@ -45,7 +45,7 @@
                                       name="expires_at"
                                       tooltip="{{__('A voucher is expired at and after this date')}}"
                                       type="date"
-                                      value="{{ isset($voucher) ? $voucher->expires_at->format('Y-m-d') : null}}"/>
+                                      value="{{ isset($voucher) ? $voucher->expires_at?->format('Y-m-d') : null}}"/>
 
 
                         <div class="form-group d-flex justify-content-end mt-3">

@@ -33,7 +33,7 @@ class Voucher extends Model
      */
     protected $casts = [
         'credits' => 'float',
-        'uses'    => 'integer'
+        'uses' => 'integer'
     ];
 
     public static function boot()

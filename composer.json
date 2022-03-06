@@ -1,0 +1,25 @@
+{
+    "name": "controlpanel/vouchers",
+    "description": "Vouchers module for controlpanel",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Controlpanel\\Vouchers\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "AVMG20",
+            "email": "rijstenpap1234@hotmail.com"
+        }
+    ],
+    "extra": {
+        "laravel" : {
+            "providers": [
+                "Controlpanel\\Vouchers\\VouchersServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}

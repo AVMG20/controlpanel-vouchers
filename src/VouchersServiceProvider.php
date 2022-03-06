@@ -12,12 +12,12 @@ class VouchersServiceProvider extends ServiceProvider
 
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
-        $this->loadTranslationsFrom(__DIR__.'/../lang', 'vouchers');
-
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'vouchers');
 
+        $this->loadJsonTranslationsFrom(__DIR__ . '/../lang/en.json');
+
         $this->publishes([
-            __DIR__.'/../lang' => $this->app->langPath('vendor/vouchers'),
+            __DIR__ . '/../lang' => $this->app->langPath('vendor/vouchers'),
         ]);
     }
 }

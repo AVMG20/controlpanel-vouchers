@@ -100,11 +100,14 @@ class VoucherController extends Controller
      */
     public function dataTable(): Builder
     {
+        /** @var GeneralSettings $settings */
+        $settings = app(GeneralSettings::class);
+
         $builder = $this->htmlBuilder
             ->addColumn(['data' => 'status', 'name' => 'status', 'title' => __('Status')])
             ->addColumn(['data' => 'code', 'name' => 'code', 'title' => __('Code')])
             ->addColumn(['data' => 'memo', 'name' => 'memo', 'title' => __('Memo')])
-            ->addColumn(['data' => 'credits', 'name' => 'credits', 'title' => __('Credits')])
+            ->addColumn(['data' => 'credits', 'name' => 'credits', 'title' => $settings->credits_display_name])
             ->addColumn(['data' => 'uses', 'name' => 'uses', 'title' => __('Used / Uses')])
             ->addColumn(['data' => 'updated_at', 'name' => 'updated_at', 'title' => __('Updated at'), 'searchable' => false])
             ->addAction(['data' => 'actions', 'name' => 'actions', 'title' => __('Actions'), 'searchable' => false, 'orderable' => false])
@@ -166,7 +169,7 @@ class VoucherController extends Controller
             ->editColumn('updated_at', function ($model) {
                 return $model->updated_at ? $model->updated_at->diffForHumans() : '';
             })
-            ->rawColumns(['actions', 'status', 'code'])
+            ->rawColumns(['actions', 'code'])
             ->make(true);
     }
 }
